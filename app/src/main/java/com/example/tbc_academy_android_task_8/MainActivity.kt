@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.tbc_academy_android_task_8.databinding.ActivityMainBinding
 import com.example.tbc_academy_android_task_8.UserListAdapter
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), UserListAdapterEvents {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: UserListAdapter
@@ -33,5 +33,10 @@ class MainActivity : AppCompatActivity() {
             users.add(user)
             adapter.notifyItemInserted(users.size - 1)
         }
+    }
+
+    override fun onItemDelete(position: Int) {
+        users.removeAt(position)
+        adapter.notifyItemRemoved(position)
     }
 }
