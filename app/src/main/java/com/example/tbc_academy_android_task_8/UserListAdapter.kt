@@ -1,15 +1,16 @@
 package com.example.tbc_academy_android_task_8
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tbc_academy_android_task_8.databinding.UserItemBinding
 
-class UserListAdapter(var users: List<User>) :
+class UserListAdapter(val context: Context, var users: List<User>) :
     RecyclerView.Adapter<UserListAdapter.UserListViewHolder>() {
 
-    var UserListAdapterEvents: UserListAdapterEvents? = null
     private var userList: MutableList<User> = users as MutableList<User>
 
     inner class UserListViewHolder(val binding: UserItemBinding) :
@@ -18,6 +19,14 @@ class UserListAdapter(var users: List<User>) :
             binding.btnDelete.setOnClickListener {
                 val position = adapterPosition
                 deleteItem(position)
+            }
+            binding.btnEdit.setOnClickListener {
+                val intent = Intent(context, UserActivity::class.java).apply {
+                    putExtra("email", binding.tvEmailValue.text.toString())
+                    putExtra("name", binding.tvNameValue.text.toString())
+                    putExtra("lastname", binding.tvLastNameValue.text.toString())
+                }
+                context.startActivity(intent)
             }
         }
     }
