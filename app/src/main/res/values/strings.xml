@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TBC-Academy-Android-Task-8</string>
+    <string name="add_item">Add item</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_name">Name</string>
+    <string name="list_of_users">List of Users</string>
+</resources>
